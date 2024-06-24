@@ -1,0 +1,181 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>INAVI</title>
+<link href="./js_files/style.css" rel="stylesheet">
+<script type="text/javascript" src="./js_files/jquery.mlens-1.0.min.js"></script> 
+<script type="text/javascript" src="./js_files/jquery.js"></script>
+<script type="text/javascript" src="./js_files/video-comparison.js"></script>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+
+<meta charset="utf-8">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+  
+  #video-compare-container {
+	display: inline-block;
+	line-height: 0;
+	position: relative;
+	width: 100%;
+	padding-top: 42.3%;
+}
+#video-compare-container > video {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	height: 100%;
+}
+#video-clipper {
+	width: 50%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	overflow: hidden;
+}
+#video-clipper video {
+	width: 200%;
+	position: absolute;
+	height: 100%;
+}
+  .column {
+    float: left;
+    width: 20%;
+    padding: 5px;
+  }
+
+  .colum4 {
+    float: left;
+    width: 25%;
+    padding: 5px;
+  }
+  
+  /* Clearfix (clear floats) */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  </style>
+ <style>
+  .grid {
+   display: flex;
+   flex-direction: row;
+   padding: 5px;
+   align-content: center;
+   /* flex-wrap: wrap; */
+  }
+  .grid > div {
+   flex-grow: 1;
+   flex-shrink: 1;
+   padding: 5px;
+   
+  }
+  .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+html {
+  scroll-behavior: smooth;
+}
+  </style>
+</head>
+
+<body>
+<div class="content">
+  <h1 style="font-size: 30"><strong>INAVI: Indoor Navigation Assistance for the Visually Impaired</strong></h1>
+  <p id="authors"><a href="mailto:krishnajaganathan108@gmail.com">Krishna Jaganathan</a> </p>
+  <br>
+  <img src="media_files/cover_img_final.png" style="width:80%; display: block; margin: auto;"><br>
+  <h3 style="text-align:center"><em>INAVI assists visually impaired users navigate around unfamiliar environments,
+    detecting/avoiding obstacles and alerting them to trip hazards in their environment.
+  </em></h3>
+    <font size="+2">
+          <p style="text-align: center;">
+            <a href="#photos">[Photos]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#demo-videos">[Demo Videos]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://github.com/kjaca321/inavi" target="_blank">[Code]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+          </p>
+    </font>
+</div>
+<div class="content">
+  <h2 style="text-align:center;">Abstract</h2>
+  <p>As populations age in many countries around the world, AI and robotics will inevitably play a greater role in 
+    society and care of the disabled and elderly. Recently, there has been a growing research interest in robots that 
+    can work alongside humans. In this paper, I introduce a robot with a novel AI pipeline that leverages multimodal 
+    language models on the cloud to communicate with the user and on-device computer vision and path planning to 
+    navigate around an environment. This robot can be given voice commands to move along a given path avoiding 
+    obstacles, and can describe such obstacles to the user, warning them about any hazards in their path. 
+    Overall, in this paper I show such robots can be useful to visually impaired humans for navigating an 
+    unfamiliar indoor environment.</p>
+</div>
+
+<div class="content">
+  <h2>Method Pipeline</h2>
+  <p>Below is our pipeline that listens for the user's prompt, parses it, and performs the appropriate scene description or motion task.</p>
+  <br>
+  <img src="./media_files/final_pipeline.png" style="width: 100%"> <br>
+</div>
+
+<div class="content">
+  <a id="demo-videos"><h2>Demo Videos</h2></a>
+  <p>Note: some parts of demo videos were sped up to reduce delays and improve viewing quality.</p>
+  <br>
+  <video style="width: 100%" controls>
+    <source src="./media_files/demo_2_entrance.mp4" type="video/mp4"> 
+  </video>
+  <p style="text-align:center;">Robot describing living room, turning, and moving ahead.</p>
+  <br>
+  <video style="width: 100%" controls>
+    <source src="./media_files/demo_3_basement.mp4" type="video/mp4"> 
+  </video>
+  <p style="text-align:center;">Robot avoiding obstacles and identifying trip hazards on the floor.</p>
+  <br>
+  <video style="width: 100%" controls>
+    <source src="./media_files/demo_1_carpet.mp4" type="video/mp4"> 
+  </video>
+  <p style="text-align:center;">Robot describing scene details and alerting the user when the path is blocked.</p>
+  
+</div>
+
+<div class="content">
+  <a id="photos"><h2>Photos</h2></a>
+  <img src="./media_files/labeled_robot.png" style="width: 100%"> <br>
+  <p style="text-align: center;">The INAVI robot with labeled components.</p>
+  <br>
+  <p>Below are snapshots of the RealSense camera's RGB and depth feeds, including the calculated Hough lines. In each snapshot, the depth feed is on the top, and RGB is on the bottom. Detected Hough lines are the red lines, and the blue line is the x-pixel coordinate chosen by the path planner. Note: slight differences in FOV between depth/RGB sensors account for differences in visual placement of objects on the depth/RGB images.</p>
+  <br>
+  <img src="./media_files/depth1.png" style="width: 100%"> <br>
+  <br><br>
+  <img src="./media_files/depth2.png" style="width: 100%"> <br>
+  <br><br>
+  <img src="./media_files/depth3.png" style="width: 100%"> <br>
+</div>
+
+<div class="content">
+  <h2>Visualization of Algorithms</h2>
+  <p>Below are graphical visualizations of the various path planning and following algorithms used in controlling robot motion.</p>
+  <br><br>
+  <img src="./media_files/path_diagram_01.png" style="width: 100%"> 
+  <p style="text-align:center;">A top-down view of the obstacle detection and path planning algorithms is shown. Pixel coordinates of Hough lines within the camera's horizontal FOV (shown by the gray field) are calculated, splitting the image into regions, shown on the right. The region with the highest width and depth combination is selected, and the x-pixel coordinate chosen is biased towards the neighboring region with more depth.</p>
+  <br>
+  <img src="./media_files/far_vs_close_obstacle_path.png" style="width: 100%"> 
+  <p style="text-align:center;">This is the path generation optimization algorithm, where target regions with smaller average depths create a more curved Bezier path.</p>
+  <br>
+  <img src="./media_files/mp_graphs.png" style="width: 100%"> 
+  <p style="text-align:center;">Motion Profiling algorithm: the calculated jerk at each point is twice integrated to retrieve velocity, represented as motor speed, bounded from 0 to 100 percent.</p>
+  <br>
+</div>
+
+
+</body>
+</html>
