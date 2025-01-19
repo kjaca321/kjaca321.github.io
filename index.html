@@ -101,22 +101,22 @@ html {
   </em></h3>
     <font size="+2">
           <p style="text-align: center;">
-            <a href="#photos">[Photos]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+<!--             <a href="#photos">[Photos]</a> &nbsp;&nbsp;&nbsp;&nbsp; -->
             <a href="#demo-videos">[Demo Videos]</a> &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="https://github.com/kjaca321/inavi" target="_blank">[Code]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+<!--             <a href="https://github.com/kjaca321/inavi" target="_blank">[Code]</a> &nbsp;&nbsp;&nbsp;&nbsp; -->
           </p>
     </font>
 </div>
 <div class="content">
   <h2 style="text-align:center;">Abstract</h2>
-  <p>As the demand for accessible and sustainable solutions in human care grows, artificial intelligence and robotics are increasingly being explored for their potential to assist individuals with disabilities. Recently, there has been a growing research interest in robots that can enhance autonomy and safety in daily activities, bridging gaps in mobility and spatial awareness. In this paper, I introduce a robot with a novel pipeline to assist in the navigation of indoor spaces for the visually impaired. The system leverages multimodal language models on the cloud to communicate with the user. On-device computer vision and path planning are employed to spatially categorize an environment, along with motion profiling algorithms to navigate indoor spaces effectively. This robot can be given voice commands to move through a space avoiding obstacles, and can describe such obstacles to the user, warning them about any hazards in their path. In a 75 participant user study, users gave high ratings for the effectiveness of the scene description and the ease of use of the robot, and emphasized the positive impact of the audio feedback capability on daily life. This underscores the substantial potential of a robotic platform for assisting the visually impaired in unfamiliar indoor environments.</p>
+  <p>As the demand for accessible and sustainable solutions in human care grows, artificial intelligence (AI) and robotics are increasingly being explored for their potential to assist individuals with disabilities. Recently, there has been a growing research interest in robots that can enhance autonomy and safety in daily activities, bridging gaps in mobility and spatial awareness. In this paper, I introduce a novel robotic pipeline that assists in the navigation of indoor spaces for the visually impaired. The system leverages cloud-based large language models (LLMs) in an agentic workflow to classify vocal input from the user and hold custom commands and conversations with intuitive and rich output. A combination of on-device computer vision and cloud models are used to spatially categorize environments, and innovative path planning and motion profiling algorithms are used to navigate indoor spaces efficiently. The system uses novel applications of LLMs for quantitative robotic analysis for enhanced navigation and interaction throughout the pipeline. The mobile robot can be given a variety of voice commands to move through spaces while avoiding obstacles, and can describe such obstacles to the user, warning them about any hazards in their path. In a 75 participant user study, users gave high ratings for the effectiveness of the scene description and the ease of use of the robot, and emphasized the positive impact of the audio feedback capability on daily life as well as the smoothness of custom verbal interaction with the robot. This underscores the substantial potential of robotics powered by AI for assisting the visually impaired in unfamiliar indoor environments.</p>
 </div>
 
 <div class="content">
   <h2>Method Pipeline</h2>
-  <p>Below is my pipeline that listens for the user's prompt, parses it, and performs the appropriate scene description or motion task.</p>
+  <p>Below is my agent workflow pipeline with high levels of user interaction and customization of inputs.</p>
   <br>
-  <img src="./media_files/final_pipeline.png" style="width: 100%"> <br>
+  <img src="./media_files/agent_templ_3.png" style="width: 100%"> <br>
 </div>
 
 <div class="content">
@@ -156,17 +156,17 @@ html {
 
 <div class="content">
   <h2>Visualization of Algorithms</h2>
-  <p>Below are graphical visualizations of the various path planning and following algorithms used in controlling robot motion.</p>
+<!--   <p>Below are graphical visualizations of the various path planning and following algorithms used in controlling robot motion.</p> -->
   <br><br>
   <img src="./media_files/path_diagram_01.png" style="width: 100%"> 
-  <p style="text-align:center;">A top-down view of the obstacle detection and path planning algorithms is shown. Pixel coordinates of Hough lines within the camera's horizontal FOV (shown by the gray field) are calculated, splitting the image into regions, shown on the right. The region with the highest width and depth combination is selected, and the x-pixel coordinate chosen is biased towards the neighboring region with more depth.</p>
+  <p style="text-align:center;">A top-down view of the obstacle detection and path planning algorithms is shown. Pixel coordinates of Hough lines within the camera's horizontal FOV (shown by the gray field) are calculated through a custom classification algorithm, splitting the image into regions, shown on the right. The region with the highest width and depth combination is selected, after LLM-based region screening, and the x-pixel coordinate chosen is biased towards the neighboring region with more depth.</p>
   <br>
-  <img src="./media_files/far_vs_close_obstacle_path.png" style="width: 100%"> 
+<!--   <img src="./media_files/far_vs_close_obstacle_path.png" style="width: 100%"> 
   <p style="text-align:center;">This is the path generation optimization algorithm, where target regions with smaller average depths create a more curved Bezier path.</p>
   <br>
   <img src="./media_files/mp_graphs.png" style="width: 100%"> 
   <p style="text-align:center;">Motion Profiling algorithm: the calculated jerk at each point is twice integrated to retrieve velocity, represented as motor speed, bounded from 0 to 100 percent.</p>
-  <br>
+  <br> -->
 </div>
 
 
